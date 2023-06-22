@@ -11,13 +11,10 @@
     <title>Sticky memo</title>
   </head>
   <body>
-    <div class="wrap">
-      <header>
-        <a href={% url 'memo_create' %} class="new-btn">새 메모</a>
-        <a href="{% url 'main' %}" class="exit-btn">나가기</a>
-      </header>
+    {% extends 'memo.html' %}
+    
+    {% block get_all_memo %}
       <ul>
-        {% block get_memo %}
         {% for memo in memos %}
         <li class="memo">
             <p class="title">{{ memo.title }}</p>
@@ -31,10 +28,8 @@
             </div>
         </li>
         {% endfor %}
-        {% endblock get_memo %}
       </ul>
+      {% endblock get_memo %}
     </div>
-
-  </body>
-  <script src="./js/memo.js"></script>
+    
 </html>
